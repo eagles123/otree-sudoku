@@ -1,0 +1,101 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+    <style>
+        td:first-child {
+            border-left:solid;
+        }
+        td:nth-child(2n) {
+            border-right:solid ;
+        }
+        tr:first-child td {
+             border-top:solid;
+        }
+        tr:nth-child(2n) td {
+            border-bottom:solid ;
+        }
+
+        input{
+            border: darkgray;
+            text-align: center;
+            margin-left: 3px;
+            height: 45px;
+            width: 45px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        table{
+            width: 250px;
+            height: 250px;
+        }
+
+        #holder {
+            position: relative;
+            padding-top: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+<div class="container" id="holder">
+    <div class="col-md-12">
+        <h4 align="center">Game {{ player.round_number }} of {{ Constants.num_rounds }}</h4>
+    </div>
+    <br/>
+  <form action="/sudoku/" method="get">
+
+       <table class="sd" border="1" align="center" cellspacing="1">
+            <tr>
+                <td class="xx"><input id="A1" class="square" name="A1" value = {{ A1 }} maxlength="1"></td>
+                <td class="xx"><input id="A2" class="square" name="A2" value = {{ A2 }} maxlength="1"></td>
+                <td class="rr"><input id="A3" class="square" name="A3" value = {{ A3 }} maxlength="1"></td>
+                <td class="xx"><input id="A4" class="square" name="A4" value = {{ A4 }} maxlength="1"></td>
+             </tr>
+            <tr>
+                <td class="xx"><input id="B1" class="square" name="B1" value = {{ B1 }} maxlength="1"></td>
+                <td class="xx"><input id="B2" class="square" name="B2" value = {{ B2 }} maxlength="1"></td>
+                <td class="rr"><input id="B3" class="square" name="B3" value = {{ B3 }} maxlength="1"></td>
+                <td class="xx"><input id="B4" class="square" name="B4" value = {{ B4 }} maxlength="1"></td>
+            </tr>
+            <tr>
+                <td class="xx"><input id="C1" class="square" name="C1" value = {{ C1 }} maxlength="1"></td>
+                <td class="xx"><input id="C2" class="square" name="C2" value = {{ C2 }} maxlength="1"></td>
+                <td class="rr"><input id="C3" class="square" name="C3" value = {{ C3 }} maxlength="1"></td>
+                <td class="xx"><input id="C4" class="square" name="C4" value = {{ C4 }} maxlength="1"></td>
+            </tr>
+            <tr>
+                <td class="xx"><input id="D1" class="square" name="D1" value = {{ D1 }} maxlength="1"></td>
+                <td class="xx"><input id="D2" class="square" name="D2" value = {{ D2 }} maxlength="1"></td>
+                <td class="rr"><input id="D3" class="square" name="D3" value = {{ D3 }} maxlength="1"></td>
+                <td class="xx"><input id="D4" class="square" name="D4" value = {{ D4 }} maxlength="1"></td>
+            </tr>
+        </table>
+{#    <table>#}
+{#      {% for n in "ABCD" %}#}
+{#      <tr>#}
+{#        {% for l in "1234" %}#}
+{#        <td>#}
+{#          <input#}
+{#            id="{{n}}{{l}}"#}
+{#            type="text"#}
+{#            name="{{n}}{{l}}"#}
+{#            value = "1"#}
+{#            class="square"#}
+{#            maxlength="1"#}
+{#            size="1"#}
+{#          />#}
+{#        </td>#}
+{#        {% endfor %}#}
+{#      </tr>#}
+{#      {% endfor %}#}
+{#    </table>#}
+
+{#    {% next_button %}#}
+    <!-- <input id="solve" type="submit" value="Solve" /> -->
+  </form>
+</div>
+
+{% endblock %}

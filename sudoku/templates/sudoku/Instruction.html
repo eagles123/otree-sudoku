@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="container">
+        <h2>Welcome to this Suduko game experiment</h2>
+        <br/>
+        <div class="card bg-light instructions">
+
+            <div class="card-body">
+                <h3>
+                    Instructions
+                </h3>
+        
+                <p>
+                    This is the place to put instructions.
+                    This is the place to put instructions.
+                    This is the place to put instructions.
+                    This is the place to put instructions.
+                </p>
+            </div>
+            <div>
+                <h3>See the following example:</h3>
+                <img src="{% static 'Sudoku/sample.png' %}"/>
+            </div>
+        </div>
+
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
