@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="container">
+        <br/>
+        <div class="card bg-light instructions">
+                <p>
+                    As you place the digits in the cells, you cannot move to the next puzzle unless you have solved the puzzle.
+                </p>
+        </div>
+
+        </div>
+    
+    {% next_button %}
+
+{% endblock %}

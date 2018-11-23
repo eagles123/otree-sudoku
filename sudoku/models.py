@@ -6,7 +6,7 @@ from otree.api import (
 )
 
 
-author = 'Your name here'
+author = 'Kevin Feng'
 
 doc = """
 Your app description
@@ -17,6 +17,7 @@ class Constants(BaseConstants):
     name_in_url = 'sudoku'
     players_per_group = None
     num_rounds = 1
+
     with open('sudoku/game.csv') as questions_file:
         playList = list(csv.reader(questions_file))
 
@@ -39,11 +40,24 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    seat_number = models.StringField(label='Your Seat Number:')
     game_id = models.IntegerField()
     question_id = models.IntegerField()
     game_attempt = models.IntegerField(initial=0)
     game_correct = models.IntegerField(initial=0)
     answer = models.IntegerField()
+    age = models.StringField(
+        choices=['18-19', '20-21', '22-23', '24-25', '26 and older'],
+        label='How old are you',
+        widget=widgets.RadioSelect)
+    gender = models.StringField(
+        choices=['Male', 'Female'],
+        label='What is your gender?',
+        widget=widgets.RadioSelect)
+    experience = models.StringField(
+        choices=['very much', 'to a great degree', 'in some  ocassions', 'rarely or not at all'],
+        label='Do you practice “word puzzles” and “number puzzles” as a hobby,',
+        widget=widgets.RadioSelect)
 
 
     def current_games(self):

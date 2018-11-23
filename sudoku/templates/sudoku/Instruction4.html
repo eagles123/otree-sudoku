@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="container">
+        <h2>Welcome to this Suduko game experiment</h2>
+        <br/>
+        <div class="card bg-light instructions">
+
+            <div class="card-body">
+                <h3>
+                    Instructions
+                </h3>
+        
+                <p>
+                    As an exercise, you need to place digits 1,2,3,4 in each 4x4 cell.
+                    The rules are that each digit can appear only once
+                    <ul>
+                <li>i) in each 2x2 cell;</li>
+                        <li>ii) in each row of four cells;</li>
+                        <li>and iii) in each column of four cells.</li>
+                    </ul>
+                </p>
+            </div>
+            <div>
+                <h3>See the following example:</h3>
+                <img src="{% static 'Sudoku/sample.png' %}"/>
+            </div>
+        </div>
+
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
