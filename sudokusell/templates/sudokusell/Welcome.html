@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="container">
+        <h2>Welcome to this Suduko game experiment</h2>
+        <br/>
+        <div class="card bg-light instructions">
+
+            <div class="card-body">
+                <h3>
+                    Welcome
+                </h3>
+        
+                <p>
+                    Thank you for participating in today’s session.
+                    By now you have read the explanatory statement, which you may take with you.
+                    Please read and sign the consent form, which you may hand over at the end.
+                </p>
+                <p>
+                    Note: Please do not refresh this page nor click the "BACK" button on your browser
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

@@ -14,9 +14,15 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
     {
        'name': 'sudoku',
-       'display_name': "Sudoku",
+       'display_name': "Sudoku-1",
        'num_demo_participants': 1,
        'app_sequence': ['sudoku'],
+    },
+    {
+       'name': 'sudokusell',
+       'display_name': "Sudoku-2",
+       'num_demo_participants': 1,
+       'app_sequence': ['sudokusell'],
     },
 ]
 
