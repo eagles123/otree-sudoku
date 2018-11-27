@@ -19,21 +19,10 @@ class Constants(BaseConstants):
     num_rounds = 1
     fixed_price = 15
 
-    # with open('sudoku/game.csv') as questions_file:
-    #     playList = list(csv.reader(questions_file))
-    #
-    # num_rounds = len(playList
-
 
 class Subsession(BaseSubsession):
     pass
-    # def creating_session(self):
-    #     if self.round_number ==1:
-    #         self.session.vars['games'] = Constants.playList.copy()
-    #     for p in self.get_players():
-    #         game_data = p.current_games()
-    #         p.game_id = int(game_data[self.round_number])
-    #         p.answer = int(game_data[self.round_number])
+
 
 
 
@@ -45,6 +34,8 @@ class Player(BasePlayer):
     seat_number = models.StringField(label='Your Seat Number:')
     game_attemptted = models.IntegerField()
     game_correctted = models.IntegerField()
+    is_terminated = models.BooleanField(initial=False)
+    time_spend = models.StringField()
     price_toBuy = models.FloatField()
     age = models.StringField(
         choices=['18-19', '20-21', '22-23', '24-25', '26 and older'],

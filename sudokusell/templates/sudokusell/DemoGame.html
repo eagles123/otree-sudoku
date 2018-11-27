@@ -55,18 +55,18 @@
 
     </style>
         <div class="container">
-			<p style="color:red">Please do not visit other page!</p>
-            <div class="row col-md-4 offset-md-5">
-                <h4>Game of : &nbsp &nbsp</h4>
-                <label id="label" style="font-size:21px"> 1</label><label id="total" style="font-size:21px" ></label>
-            <!-- <h4 class="col-md-2 offset-md-4"> Game of :</h4>
-            <label class="col-md-1" style="font-size:20px;">1</label> -->
-			<br>
-            </div>
-            <div class="col-md-4 offset-md-5">
-                <p id="demo"></p>
-            </div>
+                <div class="card bg-light instructions">
+                        <p>Try this example first.  You see below 4x4cells. 
+                        You need to place digits 1,2,3,4 in each 2x2 cell. 
+                        The rules are that each digit can appear only once</p>
+                        <ul>
+                            <li>in each 2x2 cell.</li>
+                            <li>in each row of four cells.</li>
+                            <li>in each column of four cells.</li>
+                        </ul> 
+                </div>
             <br/>
+            <h5 id="label">Try this example first:</h5>
         <table class="sd" border="1" align="center" cellspacing="1">
             <tr>
                 <td id="r0c0"><input class="sudoku" type="text" maxlength="1"></td>
@@ -94,34 +94,26 @@
             </tr>
         </table>
         <br>
-        <div class="row col-md-6 offset-md-5">
-            <button class="btn btn-primary btn-md" id="submit-button">Next Game</button>
-            <button class="offset-md-1 btn btn-danger btn-md" id="website">Leave and Visit Website</button>
-            <button class="offset-md-3 btn btn-danger btn-md" id="stop">Skip</button>
+        <div class="row col-md-6 offset-md-5" >
+            <button type="button" id="check">Check</button>
+            <button type="button" id="next">Try another game</button>
+            <button type="button" id="answer">Get answer</button>
         </div>
-        <br>
-        <div style="display: none;">
-            {{ form.game_attemptted }}
-            {{ form.game_correctted }}
-            {{ form.time_spend }}
-            {{ form.is_terminated }}
-            
-{#        {% formfield player.game_attemptted %}#}
-{#        {% formfield player.game_correctted %}#}
-{#        <input name="game_correctted" id="game_correctted"/>#}
-{#        <input name="game_attemptted" id="game_attemptted"/>#}
+            <br>
+            <div class=" col-md-6 offset-md-5" >
+                {% next_button %}
+            </div>
         </div>
-</div>
-    <script src="{% static "sudoku/games.js" %}"></script>
+
 <script>
             $(document).ready(function() {
-                var counter = 0;
-                var game_attempted = 0;
-                var game_correct = 0;
-                var games = getGames();
-                $("#total").html("/"+ (games.length-1));
-
-                buildGame();
+                var number = 1;
+                var game1 = [[3,0,2,0],[0,2,0,0],[0,0,1,0],[0,1,0,4]];
+                var answer1 = [[3,4,2,1],[1,2,4,3],[4,3,1,2],[2,1,3,4]];
+                var game2 = [[1,4,0,0],[0,2,0,0],[0,0,2,1],[0,0,4,0]];
+                var answer2 = [[1,4,3,2],[3,2,1,4],[4,3,2,1],[2,1,4,3]];
+                
+                buildGame(game1);
 
                 //function to transform each game(list fomr) to a two dimensonal array
                 function generateGameData(list){
@@ -132,93 +124,51 @@
                     return tdArray;
                 }
 
+
                 //function to populate the game board with data
-                function buildGame(){
-                    let data = generateGameData(games[counter])
+                function buildGame(game){
                     for (var r = 0; r<4; r++){
                         for (var c = 0; c <4; c++){
                             let cellid = "#r" + r +"c" +c;
                             $(cellid).html('<input class="sudoku" maxlength="1">')
-                            if (data[r][c] != ""){
-                                $(cellid).html(data[r][c])
+                            if (game[r][c] != ""){
+                                $(cellid).html(game[r][c])
                             }
                         }
                     }
                 }
-                //button click function main function of this javascript
-                $("#submit-button").click(function() {
-                    counter += 1;
-                    let number_games = counter;
+
+                $("#check").click(function(){
                     let userBoard = loadUserBoard();
-                    if(validateInput(userBoard) && checkUnniqueElement(userBoard)){
+                    if(validateInput(userBoard)){
                         if (sudokuChecker(userBoard)){
-                            game_attempted += 1;
-                            game_correct +=1;
+                            alert("It is Correct!")                            
                         }
                         else {
-                            game_attempted += 1;
+                            alert("It is not correct!")                            
                         }
                     }
                     else{
-                        game_attempted += 1;
-                    }
-
-                    if (counter === games.length-2){
-                        $('#submit-button').html("Finish");
-                        $('#stop').hide();
-                    }
-
-                    if (counter === games.length -1){
-
-                        {#$('#stop').hide();#}
-
-                        $('#id_game_attemptted').html(game_attempted);
-                        $('#id_game_attemptted').val(game_attempted);
-                        $('#id_game_correctted').html(game_correct);
-                        $('#id_game_correctted').val(game_correct);
-                        //console.log(game_correct +"/" + game_attempted);
-                        number_games = games.length-2;
-                    }
-                    number_games += 1;
-                    $('#label').html(number_games);
-
-                    buildGame();
-                });
-                //button to visit website
-                $('#website').click(function() {
-                    let r = confirm("Are you sure you want to stop the game and visit other websites?")
-                    if (r){
-                    // $('#submit-button').prop("disabled", true);
-                    // $('#website').hide();
-                    // $('#stop').hide();
-                    // $('#id_game_attemptted').html(game_attempted);
-                    // $('#id_game_attemptted').val(game_attempted);
-                    // $('#id_game_correctted').html(game_correct);
-                    // $('#id_game_correctted').val(game_correct);
-                    // $('#id_is_terminated').html(false);
-                    // $('#id_is_terminated').val(false);
-                    console.log(timepend);
+                        alert("It is not correct!")                        
                     }
                 });
 
-                //button to leave the game
-                $('#stop').click(function(){
-                    let r = confirm("Are you sure you want to leave the Experiment?")
-                    if (r){
-                        console.log("leave game")
-                    }
-                    {#$('#submit-button').hide();#}
-                    {#$('#next').show();#}
-                    {#$('#stop').hide();#}
-                    $('#id_game_attemptted').html(game_attempted);
-                    $('#id_game_attemptted').val(game_attempted);
-                    $('#id_game_correctted').html(game_correct);
-                    $('#id_game_correctted').val(game_correct);
-                    $('#id_is_terminated').html(true);
-                    $('#id_is_terminated').val(true);
-
-                    //console.log(game_correct +"/" + game_attempted);
+                $("check").click(function (){
+                    buildGame(game2);
+                    $('#label').html("Try another example:")
+                    number = 2;
                 });
+
+
+                $("answer").clearQueue(function () { 
+                    if (number ===1 ){
+                        buildGame(answer1);
+
+                    }
+                    if (number ===2){
+                        buildGame(answer2);
+                    }
+                 });
 
                 function sudokuChecker(array) {
                     if (rowSum(array) && colsum(array) && gridSum(array))
@@ -226,7 +176,7 @@
                     return false;
                 }
 
-                //function to check sum of row
+                //function to check if the answer is correct
                 function rowSum(array){
                     let isCorrect = true;
                     for (var i = 0; i<4; i++){
@@ -248,7 +198,6 @@
                     }
                     return isCorrect;
                 }
-                //check if the sum of 2x2 grid
                 function gridSum(array){
                     let isCorrect = true;
                     for (var i = 0; i <1; i++){
@@ -309,41 +258,6 @@
                     }
                     return sum;
                 }
-				
-				function checkUnniqueElement(arr) {
-					arr.sort();
-					if(arr[0] !== arr[arr.length -1])
-						return true;
-					return false;
-                }
-                
-            var origmin = 30;
-            var orisec = 60;
-            var countdown = 30*60*1000;
-            // Update the count down every 1 second
-            var timer = setInterval(function() {
-                countdown -= 1000;
-                // Time calculations for days, hours, minutes and seconds
-                var minutes = Math.floor(countdown / (60 * 1000));
-                var seconds = Math.floor((countdown - (minutes * 60 * 1000)) / 1000);
-                var spmin = origmin - minutes;
-                var spsecond = orisec - seconds;
-                var timepend = spmin + " Min" + spsecond + " Seconds";
-
-                // Display the result in the element with id="demo"
-                document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-
-                // If the count down is finished, write some text
-                if (countdown <= 0) {
-                    clearInterval(timer);
-                    $('#id_game_attemptted').html(game_attempted);
-                    $('#id_game_attemptted').val(game_attempted);
-                    $('#id_game_correctted').html(game_correct);
-                    $('#id_game_correctted').val(game_correct);
-                    $('#id_is_terminated').html(false);
-                    $('#id_is_terminated').val(false);
-                }
-            }, 1000);
 
         });
         </script>

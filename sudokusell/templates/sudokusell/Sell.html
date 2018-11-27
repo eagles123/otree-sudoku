@@ -5,18 +5,18 @@
     <div class="container">
         <br/>
         <div class="card bg-light instructions">
-                <p>
-                   Before you collect your participation fee, there is one last task.
-                    You have an opportunity to sell the Sudoku puzzle book at a price you specify.
-                    Here is the rule: If the price that you specify is higher than or equal to a “fixed price” set by the experimenter,
-                    but unknown to you, the experimenter will sell it at the “fixed price.”
-                    Otherwise, if you specify a price that is lower than the “fixed price,” you cannot sell the book.
-                    Note, you could not change the price once you type it in the slot at the bottom and click “enter.”
-                    Please specify:
-                </p>
+            <p>
+            Before you collect your participation fee, there is one last task. 
+            You have an opportunity to sell the Sudoku puzzle book at a price that depends on your willingness to sell. </p>
+            <p>Here is the rule: If the price that you specify is lower than or equal to a “fixed price” set by the experimenter, but unknown to you, the experimenter will buy it at the “fixed price.” </p>
+            <p>Otherwise, if you specify a price that is higher than the “fixed price,” you will keep the book. 
+            That is, if you end up selling the book, you will sell it at the “fixed price” that is higher than the one you specify below.  
+            </p>
+            <p>Note, you could not change the price once you type it in the slot below and click “enter.” </p>
+            <p>Please specify and click “enter”:</p>
             {% formfield player.price_toSell label="My willingness-to-sell the Sudoku puzzle book $:" %}
         </div>
-
+++
         </div>
 
     {% next_button %}

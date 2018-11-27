@@ -32,9 +32,11 @@ class Seat(Page):
     form_fields = ['seat_number']
 
 
-class Start(Page):
-    def is_displayed(self):
-        return self.round_number == 1
+class Instruction7(Page):
+    pass
+
+class DemoGame(Page):
+    pass
 
 class Sudoku(Page):
     form_model = 'player'
@@ -42,11 +44,17 @@ class Sudoku(Page):
 
 class Sell(Page):
     form_model = 'player'
-    form_fields = ['price_toSell']
+    form_fields = ['price_toBuy']
+    def is_displayed(self):
+        return self.player.is_terminated == False
 
+class Result2(Page):
+    def is_displayed(self):
+        return self.player.is_terminated == True
 
-class Results(Page):
-    pass
+class Result1(Page):
+    def is_displayed(self):
+        return self.player.is_terminated == False
 
 
 
@@ -57,11 +65,13 @@ page_sequence = [
     Instruction2,
     Instruction3,
     Instruction4,
+    DemoGame,
+    Seat,
     Instruction5,
     Instruction6,
-    Seat,
-    Start,
+    Instruction7,
     Sudoku,
     Sell,
-    Results
+    Result1,
+    Result2,
 ]
