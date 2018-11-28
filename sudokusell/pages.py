@@ -40,7 +40,7 @@ class DemoGame(Page):
 
 class Sudoku(Page):
     form_model = 'player'
-    form_fields = ['game_attemptted','game_correctted']
+    form_fields = ['game_attemptted','game_correctted', 'time_spend', 'is_terminated']
 
 class Sell(Page):
     form_model = 'player'

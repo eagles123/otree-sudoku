@@ -23,18 +23,14 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     pass
 
-
-
-
 class Group(BaseGroup):
     pass
-
 
 class Player(BasePlayer):
     seat_number = models.StringField(label='Your Seat Number:')
     game_attemptted = models.IntegerField()
     game_correctted = models.IntegerField()
-    is_terminated = models.BooleanField(initial=False)
+    is_terminated = models.StringField()
     time_spend = models.StringField()
     price_toBuy = models.FloatField()
     age = models.StringField(
@@ -49,23 +45,3 @@ class Player(BasePlayer):
         choices=['very much', 'to a great degree', 'in some  ocassions', 'rarely or not at all'],
         label='Do you practice “word puzzles” and “number puzzles” as a hobby,',
         widget=widgets.RadioSelect)
-
-
-    # def current_games(self):
-    #     return self.session.vars['games'][self.round_number - 1]
-    #
-    # def attempt_more(self):
-    #     self.game_attempt += 1
-    #
-    # def correct(self):
-    #     self.game_correct += 1
-    #
-    # def convertInt(self, inte):
-    #     if inte == 'A':
-    #         return 0
-    #     elif inte == 'B':
-    #         return 1
-    #     elif inte == 'C':
-    #         return 2
-    #     elif inte == 'D':
-    #         return 3
