@@ -66,7 +66,8 @@
                         </ul> 
                 </div>
             <br/>
-            <h5 id="label">Try this example first:</h5>
+            <h5 class="offset-4" id="label">Try this example first:</h5>
+            <br>
         <table class="sd" border="1" align="center" cellspacing="1">
             <tr>
                 <td id="r0c0"><input class="sudoku" type="text" maxlength="1"></td>
@@ -94,13 +95,13 @@
             </tr>
         </table>
         <br>
-        <div class="row col-md-6 offset-md-5" >
-            <button type="button" id="check">Check</button>
-            <button type="button" id="next">Try another game</button>
-            <button type="button" id="answer">Get answer</button>
+        <div class="row col-md-6 offset-md-4" >
+            <button type="button" id="check">Check</button><span>&nbsp</span>
+            <button type="button" id="next">Try another game</button><span>&nbsp</span>
+            <button type="button" id="anser">Get answer</button>
         </div>
             <br>
-            <div class=" col-md-6 offset-md-5" >
+            <div style="display: none;" id="button" class=" col-md-6 offset-md-5" >
                 {% next_button %}
             </div>
         </div>
@@ -153,15 +154,19 @@
                     }
                 });
 
-                $("check").click(function (){
+                $("#next").click(function (){
+                    console.log("check")
+                    $("#next").hide();
                     buildGame(game2);
                     $('#label').html("Try another example:")
+                    $('#button').css("display", 'block');
                     number = 2;
                 });
 
 
-                $("answer").clearQueue(function () { 
+                $("#anser").click(function () { 
                     if (number ===1 ){
+                        console.log("answer1")
                         buildGame(answer1);
 
                     }

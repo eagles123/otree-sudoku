@@ -17,7 +17,6 @@ class Constants(BaseConstants):
     name_in_url = 'sudokusell'
     players_per_group = None
     num_rounds = 1
-    fixed_price = 15
 
 class Subsession(BaseSubsession):
     pass
@@ -30,7 +29,7 @@ class Player(BasePlayer):
     seat_number = models.StringField(label='Your Seat Number:')
     game_attemptted = models.IntegerField()
     game_correctted = models.IntegerField()
-    is_terminated = models.BooleanField(initial=False)
+    is_terminated = models.StringField()
     time_spend = models.StringField()
     price_toSell = models.FloatField()
     age = models.StringField(

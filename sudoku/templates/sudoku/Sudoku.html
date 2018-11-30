@@ -94,10 +94,10 @@
             </tr>
         </table>
         <br>
-        <div class="row col-md-8 offset-md-4">
-            <button class="btn btn-primary btn-md" id="submit-button">Next Game</button>
-            <button type="button" class="offset-md-1 btn btn-danger btn-md" id="website">Leave and Visit Website</button>
-            <button type="button" class="offset-md-1 btn btn-danger btn-md" id="stop">Skip</button>
+        <div class="row col-md-10 offset-md-3">
+            <button class="m-2 btn btn-primary btn-md" id="submit-button">Next Game</button>
+            <button type="button" class="m-2 btn btn-primary btn-md" id="website">Visit other websites</button>
+            <button type="button" class="m-2 btn btn-danger btn-md" id="stop">Leave the experiment altogether</button>
         </div>
         <br>
         <div style="display: none;">
@@ -106,11 +106,6 @@
             {{ form.time_spend }}
             {{ form.is_terminated }}
             <button id="submit">submit</button>
-            
-{#        {% formfield player.game_attemptted %}#}
-{#        {% formfield player.game_correctted %}#}
-{#        <input name="game_correctted" id="game_correctted"/>#}
-{#        <input name="game_attemptted" id="game_attemptted"/>#}
         </div>
 </div>
     <script src="{% static "sudoku/games.js" %}"></script>
@@ -124,21 +119,23 @@
                 $("#total").html("/"+ (games.length-1));
 
                 buildGame();
-                var origmin = 0;
+                var origmin = 29;
                 var orisec = 60;
-                var countdown = 60*1000;
+                var countdown = 30*60*1000;
                 var timepend ="";
                 // Update the count down every 1 second
                 let timer = setInterval(function() {
                     countdown -= 1000;
                     // Time calculations for days, hours, minutes and seconds
-                    var minutes = Math.floor(countdown / (60 * 1000));
-                    var seconds = Math.floor((countdown - (minutes * 60 * 1000)) / 1000);
-                    var spmin = origmin - minutes;
-                    var spsecond = orisec - seconds;
-                    timepend = spmin + " Min " + spsecond + " Seconds ";
+                    let minutes = Math.floor(countdown / (60 * 1000));
+                    let seconds = Math.floor((countdown - (minutes * 60 * 1000)) / 1000);
+                    let spmin = origmin - minutes;
+                    let spsecond = orisec - seconds;
+                    let convertSecond = parseFloat((spsecond/60).toFixed(2));
+                    //timepend = spmin + " Min " + spsecond + " Seconds ";
+                    timepend = spmin+convertSecond;
 
-                    // Display the result in the element with id="demo"
+                    // Display the countdown in the element with id="demo"
                     document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
 
                     // If the count down is finished, write some text

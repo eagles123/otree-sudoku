@@ -3,30 +3,28 @@
 
 {% block content %}
     <div class="container">
-        <h2>Welcome to this Suduko game experiment</h2>
         <br/>
         <div class="card bg-light instructions">
 
             <div class="card-body">
                 <h3>
                     Welcome
-                </h3>
-        
+                </h3>        
                 <p>Thank you for participating in today’s session. 
                 Please turn off your mobile phones.  
                 Under no circumstance you are permitted to use it during the experiment.
                 </p>
                 <p>But you are welcome to use either your own laptop or the computer in the room.</p>
                 <p>By now you have read the explanatory statement, which you may take with you.  
-                Please read and sign the consent form, which you may hand over at the end
+                Please read and sign the consent form, which you may hand over at the end.
                 </p>
                 <p>No talking is allowed, if you have a question raise your hand, and the experimenter is happy to answer your question.</p>
-                <p style="font-weight: bold;">Given our software, please neither refresh the pages nor click the “back button” on your browser.</p>
+                <p>Given our software, <span style="font-weight:bold; font-style: italic">please neither refresh the pages nor click the “back button” on your browser.</span></p>
             </div>
         </div>
-
+        {% next_button %}
     </div>
 
-    {% next_button %}
+    
 
 {% endblock %}

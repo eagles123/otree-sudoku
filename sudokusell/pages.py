@@ -44,34 +44,39 @@ class Sudoku(Page):
 
 class Sell(Page):
     form_model = 'player'
-    form_fields = ['price_toBuy']
+    form_fields = ['price_toSell']
     def is_displayed(self):
-        return self.player.is_terminated == False
+        return self.player.is_terminated == "No"
 
-class Result2(Page):
+class Stop(Page):
     def is_displayed(self):
-        return self.player.is_terminated == True
+        return self.player.is_terminated == "Yes"
+
+class Result(Page):
+    def is_displayed(self):
+        return self.player.is_terminated == "No"
 
 class Result1(Page):
     def is_displayed(self):
-        return self.player.is_terminated == False
+        return self.player.is_terminated == "No"
 
 
 
 page_sequence = [
     Welcome,
-    Questions,
-    Award,
-    Instruction2,
-    Instruction3,
-    Instruction4,
-    DemoGame,
-    Seat,
-    Instruction5,
-    Instruction6,
-    Instruction7,
+    # Questions,
+    # Award,
+    # Instruction2,
+    # Instruction3,
+    # Instruction4,
+    # DemoGame,
+    # Seat,
+    # Instruction5,
+    # Instruction6,
+    # Instruction7,
     Sudoku,
+    Result,
     Sell,
     Result1,
-    Result2,
+    Stop,
 ]

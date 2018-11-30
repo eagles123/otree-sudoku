@@ -52,9 +52,13 @@ class Stop(Page):
     def is_displayed(self):
         return self.player.is_terminated == "Yes"
 
+class Result(Page):
+    def is_displayed(self):
+        return self.player.is_terminated == "No"
+
 class Result1(Page):
     def is_displayed(self):
-        return self.player.is_terminated == "NO"
+        return self.player.is_terminated == "No"
 
 
 
@@ -71,6 +75,7 @@ page_sequence = [
     # Instruction6,
     # Instruction7,
     Sudoku,
+    Result,
     Buy,
     Result1,
     Stop,

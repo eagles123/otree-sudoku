@@ -17,7 +17,6 @@ class Constants(BaseConstants):
     name_in_url = 'sudoku'
     players_per_group = None
     num_rounds = 1
-    fixed_price = 15
 
 
 class Subsession(BaseSubsession):
@@ -35,7 +34,7 @@ class Player(BasePlayer):
     price_toBuy = models.FloatField()
     age = models.StringField(
         choices=['18-19', '20-21', '22-23', '24-25', '26 and older'],
-        label='How old are you',
+        label='How old are you?',
         widget=widgets.RadioSelect)
     gender = models.StringField(
         choices=['Male', 'Female'],
@@ -43,5 +42,5 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
     experience = models.StringField(
         choices=['very much', 'to a great degree', 'in some  ocassions', 'rarely or not at all'],
-        label='Do you practice “word puzzles” and “number puzzles” as a hobby,',
+        label='Do you practice “word puzzles” and “number puzzles” as a hobby?',
         widget=widgets.RadioSelect)

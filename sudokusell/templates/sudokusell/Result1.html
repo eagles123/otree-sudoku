@@ -2,15 +2,18 @@
 {% load otree static %}
 
 {% block content %}
-    <p>You attemped {{player.game_attemptted}} games and corrected {{player.game_correctted}}.</p>
-    <p>Total time spend on the game is {{player.time_spend}}. </p>
-    <p>Please remember your seat number, collect all your belongings, and queue at the front desk.  Remember, at the front desk:</p>
+<div class="container">
+        <br/>
+        <div class="card bg-light instructions">
+    <p>Please remember your seat number, collect all your belongings, and queue at the front desk. At the front desk,</p>
     <ul>
-        <li>Please hand over the consent form.</li>
-        <li>To receive participation fee, you need to report your seat number.</li>
-        <li>We will inform you if you must sell the Puzzle book, given the price you have specified.</li>
+        <li>please hand over the consent form.</li>
+        <li>to receive participation fee, you need to report your seat number.</li>
+        <li>the experimenter will inform you if you must <span style="font-weight:bold; font-style: italic">sell</span> the Puzzle book, given the price you have specified.</li>
     </ul>
+        </div>
     {% next_button %}
+</div>
 {% endblock %}
 
 

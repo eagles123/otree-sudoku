@@ -101,7 +101,7 @@
             <button type="button" id="anser">Get answer</button>
         </div>
             <br>
-            <div class=" col-md-6 offset-md-5" >
+            <div style="display: none;" id="button" class=" col-md-6 offset-md-5" >
                 {% next_button %}
             </div>
         </div>
@@ -156,8 +156,10 @@
 
                 $("#next").click(function (){
                     console.log("check")
+                    $("#next").hide();
                     buildGame(game2);
                     $('#label').html("Try another example:")
+                    $('#button').css("display", 'block');
                     number = 2;
                 });
 
