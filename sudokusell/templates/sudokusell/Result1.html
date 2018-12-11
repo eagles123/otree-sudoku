@@ -4,15 +4,23 @@
 {% block content %}
 <div class="container">
         <br/>
-        <div class="card bg-light instructions">
-    <p>Please remember your seat number, collect all your belongings, and queue at the front desk. At the front desk,</p>
+        <div dir="rtl" class="card bg-light instructions">
+    <!-- <p>Please remember your seat number, collect all your belongings, and queue at the front desk. At the front desk,</p>
     <ul>
         <li>please hand over the consent form.</li>
         <li>to receive participation fee, you need to report your seat number.</li>
         <li>the experimenter will inform you if you must <span style="font-weight:bold; font-style: italic">sell</span> the Puzzle book, given the price you have specified.</li>
     </ul>
-        </div>
-    {% next_button %}
+        </div> -->
+
+        <p dir="rtl">נא עברו לחדר השני לסגירת התשלום</p>
+        <!-- <ul  style="list-style-type: hebrew; direction: rtl">
+        <li>תשלום עבור זמן</li>
+        <li> הנסיין מודיע להם אם הם <span dir="rtl" style="font-weight:bold"> חייבים </span>למכור את ספר הפאזלים , בהנתן המחיר שציינו. </li>
+        </ul> -->
+    
+</div>
+{% next_button %}
 </div>
 {% endblock %}
 

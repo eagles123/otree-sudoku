@@ -1,16 +1,17 @@
 {% extends "global/Page.html" %}
+
 {% load otree static %}
 
 {% block content %}
-    <div class="container">
-        <br/>
-        <div class="card bg-light instructions">
 
-            <div class="card-body">
-                <h3>
-                    Welcome
-                </h3>        
-                <p>Thank you for participating in today’s session. 
+    <div dir="RTL" class="container">
+        <br/>
+        <div dir="RTL" class="card bg-light instructions">
+
+            <div dir="RTL" class="card-body">
+
+                <!-- for Hebrew <p dir="RTL"></p>       -->
+                <!-- <p>Thank you for participating in today’s session. 
                 Please turn off your mobile phones.  
                 Under no circumstance you are permitted to use it during the experiment.
                 </p>
@@ -19,7 +20,13 @@
                 Please read and sign the consent form, which you may hand over at the end.
                 </p>
                 <p>No talking is allowed, if you have a question raise your hand, and the experimenter is happy to answer your question.</p>
-                <p>Given our software, <span style="font-weight:bold; font-style: italic">please neither refresh the pages nor click the “back button” on your browser.</span></p>
+                <p>Given our software, <span style="font-weight:bold; font-style: italic">please neither refresh the pages nor click the “back button” on your browser.</span></p> -->
+                <p dir="RTL">תודה על השתתפותכם. אנא כבו פלפונים סלולריים ולא ניתן להשתמש בהם כלל במהלך הניסוי.</p>
+                <p dir="RTL">ניתן אבל להשתמש במחשבים שבחדר או לפטופ שלכם.</p>
+                <p dir="RTL">אנא חיתמו על טופס ההצהרה המודעת לאשר השתתפותכם בהתנדבות.</p>
+                <p dir="RTL">משלב זה לא ניתן לדבר אחד עם השני. אם יש שאלה, נא הרימו ידכם והנסיין יגש אליכם ויענה על שאלתכם.</p>
+                <p dir="RTL">עקב אילוצי התוכנה,<span dir="rtl" style="font-weight:bold; font-style: italic"> אין להשתמש ב Refresh או בכפתור Back בדפדפן שלכם.</span></p>
+
             </div>
         </div>
         {% next_button %}

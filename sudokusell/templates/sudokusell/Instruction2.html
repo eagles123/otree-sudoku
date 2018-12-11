@@ -4,12 +4,28 @@
 {% block content %}
     <div class="container">
         <br/>
-        <div class="card bg-light instructions">
-                <p>Take 5 minutes to examine the first two pages of the Sudoku puzzle book to familiarize yourself with the rules of the game.</p>
+        <div dir="rtl" class="card bg-light instructions">
+                <!-- <p>Take 5 minutes to examine the first two pages of the Sudoku puzzle book to familiarize yourself with the rules of the game.</p> -->
+                <p dir="rtl">בבקשה קח 5 דקות לקרוא את שני העמודים הראשונים בספר על מנת להתוודע לחוקי המשחק.</p>
         </div>
         {% next_button %}
         </div>
     
-   
+        <script>
+        $(document).ready(function() {
+                //$('button').attr("disabled", true);
+                var countdown = 1*60*1000;
+                let timer = setInterval(function() {
+                        countdown -= 1000;
+                        let minutes = Math.floor(countdown / (60 * 1000));
+                        let seconds = Math.floor((countdown - (minutes * 60 * 1000)) / 1000);
+
+                        if (countdown <= 0) {  
+                        clearInterval(timer)
+                        $('button').attr("disabled", false);
+                        }
+                }, 1000);
+        });
+        </script>
 
 {% endblock %}

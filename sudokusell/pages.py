@@ -7,7 +7,7 @@ class Welcome(Page):
 
 class Questions(Page):
     form_model = 'player'
-    form_fields = ['age', 'gender', 'experience']
+    form_fields = ['age', 'gender', 'sudokoHobby', 'wordNumberHobby']
 
 
 class Award(Page):
@@ -36,29 +36,22 @@ class Instruction7(Page):
     pass
 
 class DemoGame(Page):
-    pass
+    form_model = 'player'
+    form_fields = ['first_demo', 'first_demo_time','second_demo','second_demo_time','demo1_button_sequence','demo2_button_sequence']
 
 class Sudoku(Page):
     form_model = 'player'
-    form_fields = ['game_attemptted','game_correctted', 'time_spend', 'is_terminated']
+    form_fields = ['game_attemptted','game_correctted', 'time_spend','visit_websites']
 
 class Sell(Page):
     form_model = 'player'
     form_fields = ['price_toSell']
-    def is_displayed(self):
-        return self.player.is_terminated == "No"
-
-class Stop(Page):
-    def is_displayed(self):
-        return self.player.is_terminated == "Yes"
 
 class Result(Page):
-    def is_displayed(self):
-        return self.player.is_terminated == "No"
+    pass
 
 class Result1(Page):
-    def is_displayed(self):
-        return self.player.is_terminated == "No"
+    pass
 
 
 
@@ -69,14 +62,13 @@ page_sequence = [
     # Instruction2,
     # Instruction3,
     # Instruction4,
-    # DemoGame,
-    # Seat,
-    # Instruction5,
-    # Instruction6,
-    # Instruction7,
+    DemoGame,
+    Seat,
+    Instruction5,
+    Instruction6,
+    Instruction7,
     Sudoku,
     Result,
     Sell,
     Result1,
-    Stop,
 ]

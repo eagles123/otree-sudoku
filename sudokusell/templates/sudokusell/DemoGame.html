@@ -55,20 +55,26 @@
 
     </style>
         <div class="container">
-                <div class="card bg-light instructions">
-                        <p>Try this example first.  You see below 4x4cells. 
+                <div dir="rtl" class="card bg-light instructions">
+                        <!-- <p>Try this example first.  You see below 4x4cells. 
                         You need to place digits 1,2,3,4 in each 2x2 cell. 
-                        The rules are that each digit can appear only once</p>
-                        <ul>
+                        The rules are that each digit can appear only once</p> -->
+                        <p dir="auto"> למטה מופיעים 4 על 4 תאים . משימתך היא להוסיף את הספרות 1,2,3,4 בכל רשת של 2 על 2. החוקים הם שכל ספרה יכולה להופיע רק פעם אחת </p>
+                        <!-- <ul>
                             <li>in each 2x2 cell.</li>
                             <li>in each row of four cells.</li>
                             <li>in each column of four cells.</li>
-                        </ul> 
+                        </ul>  -->
+                        <ol  style="list-style-type: hebrew; direction: rtl">
+                            <li dir="rtl">בכל רשת של 2 על 2 תאים, </li>
+                            <li dir="rtl">בכל שורה של ארבעה תאים </li>
+                            <li dir="rtl">בכל טור של ארבע תאים.</li>
+                        </ol>
                 </div>
             <br/>
-            <h5 class="offset-4" id="label">Try this example first:</h5>
+            <h5 dir="rtl" align="center" id="label">נסה את הדוגמא הזאת קודם</h5>
             <br>
-        <table class="sd" border="1" align="center" cellspacing="1">
+        <table dir="ltr" class="sd" border="1" align="center" cellspacing="1">
             <tr>
                 <td id="r0c0"><input class="sudoku" type="text" maxlength="1"></td>
                 <td id="r0c1"><input class="sudoku" type="text" maxlength="1"></td>
@@ -95,24 +101,39 @@
             </tr>
         </table>
         <br>
-        <div class="row col-md-6 offset-md-4" >
-            <button type="button" id="check">Check</button><span>&nbsp</span>
-            <button type="button" id="next">Try another game</button><span>&nbsp</span>
-            <button type="button" id="anser">Get answer</button>
+        <div align="center" >
+            <button type="button" id="check">בדוק</button><span>&nbsp</span>
+            <button type="button" id="next">ננסה עוד דוגמא </button><span>&nbsp</span>
+            <button type="button" id="answer">הראה תשובה</button>
         </div>
             <br>
-            <div style="display: none;" id="button" class=" col-md-6 offset-md-5" >
+            <div style="display: none;" id="button"  align="center" >
                 {% next_button %}
             </div>
+        </div>
+        <br>
+        <div style="display: none;">
+            {{ form.first_demo }}
+            {{ form.first_demo_time }}
+            {{ form.second_demo }}
+            {{ form.second_demo_time }}
+            {{ form.demo1_button_sequence }}
+            {{ form.demo2_button_sequence }}
+        </div>
         </div>
 
 <script>
             $(document).ready(function() {
+                $('#next').attr("disabled", true);
                 var number = 1;
                 var game1 = [[3,0,2,0],[0,2,0,0],[0,0,1,0],[0,1,0,4]];
                 var answer1 = [[3,4,2,1],[1,2,4,3],[4,3,1,2],[2,1,3,4]];
                 var game2 = [[1,4,0,0],[0,2,0,0],[0,0,2,1],[0,0,4,0]];
                 var answer2 = [[1,4,3,2],[3,2,1,4],[4,3,2,1],[2,1,4,3]];
+                var clicked = "";
+                var startTime1 = new Date();
+                var startTime2 = new Date();
+                
                 
                 buildGame(game1);
 
@@ -140,37 +161,87 @@
                 }
 
                 $("#check").click(function(){
+                    $('#next').attr("disabled", false);
                     let userBoard = loadUserBoard();
-                    if(validateInput(userBoard)){
-                        if (sudokuChecker(userBoard)){
-                            alert("It is Correct!")                            
+                    if (number === 1){
+                        let endTime1 = new Date();
+                        let demoTime1 = Math.round((endTime1 - startTime1)/1000);
+                        if (clicked === ""){
+                        clicked = "check";
+                        $('#id_demo1_button_sequence').val("Attempt First")
+                        check(userBoard)? $('#id_first_demo').val("Correct") : $('#id_first_demo').val("Wrong")
+                        $('#id_first_demo_time').val(demoTime1);
+                        }
+                        
+
+                    }
+                    if (number === 2){
+                        let endTime2 = new Date();
+                        let demoTime2 = Math.round((endTime2 - startTime2)/1000);
+                        if (clicked === ""){
+                        clicked = "check";
+                        $('#id_demo2_button_sequence').val("Attempt First")
+                        check(userBoard)? $('#id_second_demo').val("Correct") : $('#id_second_demo').val("Wrong")
+                        $('#id_second_demo_time').val(demoTime2);                        
+                        }
+                        
+                    }
+                });
+
+                function check(board) {
+                    if(validateInput(board)){
+                        if (sudokuChecker(board)){
+                           // alert("It is Correct!")                            
+                           alert("נכון!");
+                           return true;
                         }
                         else {
-                            alert("It is not correct!")                            
+                            //alert("It is not correct!")     
+                            alert("לא נכון");                       
+                            return false;
                         }
                     }
                     else{
-                        alert("It is not correct!")                        
+                        //alert("It is not correct!")                        
+                        alert("לא נכון");
+                        return false; 
                     }
-                });
+                };
 
                 $("#next").click(function (){
-                    console.log("check")
                     $("#next").hide();
                     buildGame(game2);
-                    $('#label').html("Try another example:")
+                    $('#label').html("ננסה עוד דוגמא")
                     $('#button').css("display", 'block');
                     number = 2;
+                    clicked = "";
+                    startTime2 = new Date();
                 });
 
 
-                $("#anser").click(function () { 
+                $("#answer").click(function () { 
+                    $('#next').attr("disabled", false);
                     if (number ===1 ){
-                        console.log("answer1")
+                        let endTimeOne = new Date();
+                        var demoTimeOne = Math.round((endTimeOne - startTime1)/1000);
+                        if (clicked === ""){
+                        clicked = "Answer";
+                        $('#id_demo1_button_sequence').val("Get Answer First")
+                        $('#id_first_demo').val("No attemps")
+                        $('#id_first_demo_time').val(demoTimeOne);
+                        }
                         buildGame(answer1);
 
                     }
                     if (number ===2){
+                        let endTimeTwo = new Date();
+                        var demonTimeTwo = Math.round((endTimeTwo - startTime2)/1000);
+                        if (clicked === ""){
+                        clicked = "Answer";
+                        $('#id_demo2_button_sequence').val("Get Answer First")
+                        $('#id_second_demo').val("No attemps")
+                        $('#id_second_demo_time').val(demonTimeTwo);
+                        }
                         buildGame(answer2);
                     }
                  });
@@ -267,3 +338,9 @@
         });
         </script>
 {% endblock %}
+
+
+
+
+
+    

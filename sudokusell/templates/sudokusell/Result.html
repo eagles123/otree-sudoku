@@ -3,10 +3,14 @@
 
 {% block content %}
 <div class="container">
-<h5>You attemped {{player.game_attemptted}} puzzles, and solved corrected {{player.game_correctted}} puzzles.</h5>
+        <div dir="rtl" class="card bg-light instructions">
+<!-- <h5>You attemped {{player.game_attemptted}} puzzles, and solved corrected {{player.game_correctted}} puzzles.</h5> -->
+<h5> ניסית {{player.game_attemptted}} חידות, ופתרת נכון {{player.game_correctted}} חידות;  </h5>
 <br>
-<h5>You played {{player.time_spend}} out of 30 minutes. </h5>
+<!-- <h5>You played {{player.time_spend}} out of 30 minutes. </h5> -->
+<h5>ושיחקת במשך {{player.time_spend}} דקות מתוך ה 30 דקות</h5>
 <br>
+</div>
 
     {% next_button %}
     </div>

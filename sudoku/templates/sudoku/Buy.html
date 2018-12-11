@@ -4,17 +4,24 @@
 {% block content %}
     <div class="container">
         <br/>
-        <div class="card bg-light instructions">
-                <p>
-                Before you collect your participation fee, <span style="font-weight:bold; font-style: italic">there is one last task. </span>> 
-                You have an opportunity <span style="font-weight:bold; font-style: italic">to buy</span> the Sudoku puzzle book at a price that depends on your willingness to pay. </p>
-                <p>Here is the rule: If the price that you specify is higher than or equal to a “fixed price” set by the experimenter, but unknown to you, the experimenter will sell it at the “fixed price.” </p> 
-                <p>Otherwise, if you specify a price that is lower than the “fixed price,” you cannot buy the book.
-                 That is, if you end up buying the book, you will buy it at the “fixed price” that is lower than the one you specify below.
-                </p>
-                <p>Note, you could not change the price once you type it in the slot below and click "Next". </p>
-                <p>Please specify and click “Next”:</p>
-                {% formfield player.price_toBuy label="My willingness-to-pay for the Sudoku puzzle book ILS:" %}
+        <div dir="rtl" class="card bg-light instructions">
+            <p>
+            <!-- Before you collect your participation fee, <span style="font-weight:bold; font-style: italic">there is one last task. </span>
+            You have an opportunity <span style="font-weight:bold; font-style: italic">to sell</span> the Sudoku puzzle book at a price that depends on your willingness to accept. </p>
+            <p>Here is the rule: If the price that you specify is lower than or equal to a “fixed price” set by the experimenter, but unknown to you, the experimenter will buy it at the “fixed price.”</p> 
+            <p>Otherwise, if you specify a price that is higher than the “fixed price,” you will keep the book.  
+            That is, if you end up selling the book, you will sell it at the “fixed price” that is higher than the one you specify below.</p>
+            <p>Note, you could not change the price once you type it in the slot below and click “Next". </p>
+            <p>Please specify and click "Next”:</p> -->
+
+            <p> לפני שאתם אוספים את שכרכם עבור הניסוי, <span style="font-weight:bold; font-style: italic">ישנה מטלה אחת אחרונה. </span> יש לכם אפשרות <span style="font-weight:bold; font-style: italic"> לקנות  </span>את ספר חידות הפאזל במחיר שתלוי בכמה אתם מוכנים לשלם.</p>
+            <p dir="rtl">הנה החוק: הנסיין קבע באופן אקראי "מחיר קבוע מראש" מתוך טווח מסויים של מחירים. המחיר הקבוע-מראש לא ידוע למשתתפים . אם המחיר שתציינו גבוה מ"מחיר הקבוע מראש", הנסיין ימכור לכם את הספר במחיר הקבוע מראש.</p>
+            <p dir="rtl">אחרת, אם תציינו מחיר שהוא יותר נמוך מה"מחיר הקבוע מראש" לא תוכלו לקנות את הספר.</p>
+            <p dir="rtl">זאת אומרת שאם תקנו את הספר תקנו אותו ב"מחיר קבוע מראש" שהוא יותר נמוך ממה שאתם תציינו.</p>
+            <p dir="rtl">שימו לב , שלא תוכלו לשנות את המחיר מהרגע שתקלידו אותו בשורה למטה ואחרי שתלחצו על כפתור "next".</p>
+            <p dir="rtl">אנא ציינו המחיר ולחצו על " next "</p>
+
+            {% formfield player.price_toBuy label=' המחיר הכי גבוה שאני מוכן לתת עבור רכישת ספר חידות הסודוקו הוא  ש"ח ' %}
         </div>
         {% next_button %}
         </div>

@@ -55,19 +55,23 @@
 
     </style>
         <div class="container">
-			<p style="color:red">Please do not visit other websites while playing the game, unless you choose to do so by clicking the button at the bottom</p>
-            <div class="row col-md-4 offset-md-5">
-                <h4>Game of : &nbsp &nbsp</h4>
+            <!-- <p style="color:red">Please do not visit other websites while playing the game, unless you choose to do so by clicking the button at the bottom</p> -->
+            <p dir="rtl" style="color:red">אנא אל תשוטט באתרים אחרים במהלך המשחק, אלא אם כן אתה בוחר לסיים את המשחק באמצעות לחיצה על הכפתור שלמטה.</p>
+
+
+            <div class="row col-md-12" style="padding-right:400px;">
+                <h4 dir="rtl">משחק: &nbsp &nbsp</h4>
                 <label id="label" style="font-size:21px"> 1</label><label id="total" style="font-size:21px" ></label>
             <!-- <h4 class="col-md-2 offset-md-4"> Game of :</h4>
             <label class="col-md-1" style="font-size:20px;">1</label> -->
 			<br>
             </div>
-            <div class="col-md-4 offset-md-4 row">
+
+            <!-- <div class="col-md-12 row" style="padding-right:400px;">
                 <span style="font-weight:bold">Time Remaining:&nbsp </span><p id="demo"></p>
-            </div>
+            </div> -->
             <br/>
-        <table class="sd" border="1" align="center" cellspacing="1">
+        <table dir="ltr" class="sd" border="1" align="center" cellspacing="1">
             <tr>
                 <td id="r0c0"><input class="sudoku" type="text" maxlength="1"></td>
                 <td id="r0c1"><input class="sudoku" type="text" maxlength="1"></td>
@@ -94,21 +98,22 @@
             </tr>
         </table>
         <br>
-        <div class="row col-md-10 offset-md-3">
-            <button class="m-2 btn btn-primary btn-md" id="submit-button">Next Game</button>
-            <button type="button" class="m-2 btn btn-primary btn-md" id="website">Visit other websites</button>
-            <button type="button" class="m-2 btn btn-danger btn-md" id="stop">Leave the experiment altogether</button>
+        <div align="center">
+            <button class="m-2 btn btn-primary btn-md" id="submit-button">לחידה הבאה</button>
+            <button type="button" class="m-2 btn btn-primary btn-md" id="website">בקר באתרים אחרים</button>
+            <!-- <button type="button" class="m-2 btn btn-danger btn-md" id="stop">השאירו את הניסוי</button> -->
         </div>
         <br>
         <div style="display: none;">
             {{ form.game_attemptted }}
             {{ form.game_correctted }}
             {{ form.time_spend }}
-            {{ form.is_terminated }}
+            {{ form.visit_websites }}
+
             <button id="submit">submit</button>
         </div>
 </div>
-    <script src="{% static "sudoku/games.js" %}"></script>
+    <script src="{% static 'sudoku/games.js' %}"></script>
 <script>
             $(document).ready(function() {
                 var counter = 0;
@@ -136,7 +141,7 @@
                     timepend = spmin+convertSecond;
 
                     // Display the countdown in the element with id="demo"
-                    document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+                    // document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
 
                     // If the count down is finished, write some text
                     if (countdown <= 0) {  
@@ -144,7 +149,7 @@
                         if (visit == false){                    
                             $('#id_game_attemptted').val(game_attempted);
                             $('#id_game_correctted').val(game_correct);
-                            $('#id_is_terminated').val("No");
+                            // $('#id_is_terminated').val("No");
                             $('#id_time_spend').val(timepend);
                             $("#submit").click();
                         }
@@ -195,14 +200,14 @@
                     }
 
                     if (counter === games.length-2){
-                        $('#submit-button').html("Finish");
+                        $('#submit-button').html("סיים");
 
                     }
 
                     if (counter === games.length -1){
                         $('#id_game_attemptted').val(game_attempted);
                         $('#id_game_correctted').val(game_correct);
-                        $('#id_is_terminated').val("No");
+                        // $('#id_is_terminated').val("No");
                         $('#id_time_spend').val(timepend)
                         number_games = games.length-2;
                     }
@@ -223,21 +228,22 @@
                     $('#id_game_correctted').val(game_correct);
                     $('#id_is_terminated').val("No");
                     $('#id_time_spend').val(timepend);
+                    $('#id_visit_websites').val("Yes");
                 
                     }
                 });
-
+                
                 //button to leave the game
-                $('#stop').click(function(){
-                    let r = confirm("Are you sure you want to leave the Experiment?")
-                    if (r){
-                    $('#id_game_attemptted').val(game_attempted);
-                    $('#id_game_correctted').val(game_correct);
-                    $('#id_is_terminated').val("Yes");
-                    $('#id_time_spend').val(timepend);
-                    $('#stop').prop("type", "submit")
-                    }
-                });
+                // $('#stop').click(function(){
+                //     let r = confirm("Are you sure you want to leave the Experiment?")
+                //     if (r){
+                //     $('#id_game_attemptted').val(game_attempted);
+                //     $('#id_game_correctted').val(game_correct);
+                //     $('#id_is_terminated').val("Yes");
+                //     $('#id_time_spend').val(timepend);
+                //     $('#stop').prop("type", "submit")
+                //     }
+                // });
 
                 function sudokuChecker(array) {
                     if (rowSum(array) && colsum(array) && gridSum(array))
