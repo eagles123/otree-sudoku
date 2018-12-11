@@ -163,24 +163,25 @@
                     let userBoard = loadUserBoard();
                     if (number === 1){
                         let endTime1 = new Date();
-                        let demoTime1 = Math.round((endTime1 - startTime1)/1000);
+                        let demoTime1 = ((endTime1 - startTime1)/1000)/60;
                         if (clicked === ""){
                         clicked = "check";
                         $('#id_demo1_button_sequence').val("Attempt First")
                         check(userBoard)? $('#id_first_demo').val("Correct") : $('#id_first_demo').val("Wrong")
-                        $('#id_first_demo_time').val(demoTime1);
+                        $('#id_first_demo_time').val(demoTime1.toFixed(2));
                         }
                         
 
                     }
                     if (number === 2){
                         let endTime2 = new Date();
-                        let demoTime2 = Math.round((endTime2 - startTime2)/1000);
+                        let demoTime2 = ((endTime2 - startTime2)/1000)/60;
                         if (clicked === ""){
                         clicked = "check";
                         $('#id_demo2_button_sequence').val("Attempt First")
                         check(userBoard)? $('#id_second_demo').val("Correct") : $('#id_second_demo').val("Wrong")
-                        $('#id_second_demo_time').val(demoTime2);                        
+                        $('#id_second_demo_time').val(demoTime2.toFixed(2)); 
+                        $('#button').css("display", 'block');                       
                         }
                         
                     }
@@ -210,7 +211,6 @@
                     $("#next").hide();
                     buildGame(game2);
                     $('#label').html("ננסה עוד דוגמא")
-                    $('#button').css("display", 'block');
                     number = 2;
                     clicked = "";
                     startTime2 = new Date();
@@ -221,24 +221,25 @@
                     $('#next').attr("disabled", false);
                     if (number ===1 ){
                         let endTimeOne = new Date();
-                        var demoTimeOne = Math.round((endTimeOne - startTime1)/1000);
+                        let demoTimeOne = ((endTimeOne - startTime1)/1000)/60;
                         if (clicked === ""){
                         clicked = "Answer";
                         $('#id_demo1_button_sequence').val("Get Answer First")
                         $('#id_first_demo').val("No attemps")
-                        $('#id_first_demo_time').val(demoTimeOne);
+                        $('#id_first_demo_time').val(demoTimeOne.toFixed(2));
                         }
                         buildGame(answer1);
 
                     }
                     if (number ===2){
                         let endTimeTwo = new Date();
-                        var demonTimeTwo = Math.round((endTimeTwo - startTime2)/1000);
+                        let demonTimeTwo = ((endTimeTwo - startTime2)/1000)/60;
                         if (clicked === ""){
                         clicked = "Answer";
                         $('#id_demo2_button_sequence').val("Get Answer First")
                         $('#id_second_demo').val("No attemps")
-                        $('#id_second_demo_time').val(demonTimeTwo);
+                        $('#id_second_demo_time').val(demonTimeTwo.toFixed(2));
+                        $('#button').css("display", 'block');
                         }
                         buildGame(answer2);
                     }

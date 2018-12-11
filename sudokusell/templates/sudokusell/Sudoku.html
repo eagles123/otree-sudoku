@@ -127,7 +127,7 @@
                 var origmin = 29;
                 var orisec = 60;
                 var countdown = 30*60*1000;
-                var timepend ="";
+                var timeSpend ="";
                 // Update the count down every 1 second
                 let timer = setInterval(function() {
                     countdown -= 1000;
@@ -138,7 +138,7 @@
                     let spsecond = orisec - seconds;
                     let convertSecond = parseFloat((spsecond/60).toFixed(2));
                     //timepend = spmin + " Min " + spsecond + " Seconds ";
-                    timepend = spmin+convertSecond;
+                    timeSpend = spmin+convertSecond;
 
                     // Display the countdown in the element with id="demo"
                     // document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
@@ -150,7 +150,7 @@
                             $('#id_game_attemptted').val(game_attempted);
                             $('#id_game_correctted').val(game_correct);
                             // $('#id_is_terminated').val("No");
-                            $('#id_time_spend').val(timepend);
+                            $('#id_time_spend').val(timeSpend);
                             $("#submit").click();
                         }
                         else{
@@ -208,7 +208,7 @@
                         $('#id_game_attemptted').val(game_attempted);
                         $('#id_game_correctted').val(game_correct);
                         // $('#id_is_terminated').val("No");
-                        $('#id_time_spend').val(timepend)
+                        $('#id_time_spend').val(timeSpend)
                         number_games = games.length-2;
                     }
                     number_games += 1;
@@ -227,7 +227,7 @@
                     $('#id_game_attemptted').val(game_attempted);
                     $('#id_game_correctted').val(game_correct);
                     $('#id_is_terminated').val("No");
-                    $('#id_time_spend').val(timepend);
+                    $('#id_time_spend').val(timeSpend);
                     $('#id_visit_websites').val("Yes");
                 
                     }

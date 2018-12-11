@@ -104,7 +104,7 @@
             <!-- <button type="button" class="m-2 btn btn-danger btn-md" id="stop">השאירו את הניסוי</button> -->
         </div>
         <br>
-        <div>
+        <div style="display: none;">
             {{ form.game_attemptted }}
             {{ form.game_correctted }}
             {{ form.time_spend }}
@@ -127,7 +127,7 @@
                 var origmin = 29;
                 var orisec = 60;
                 var countdown = 30*60*1000;
-                var timepend ="";
+                var timeSpend ="";
                 // Update the count down every 1 second
                 let timer = setInterval(function() {
                     countdown -= 1000;
@@ -137,7 +137,7 @@
                     let spmin = origmin - minutes;
                     let spsecond = orisec - seconds;
                     let convertSecond = parseFloat((spsecond/60).toFixed(2));
-                    //timepend = spmin + " Min " + spsecond + " Seconds ";
+                    //timeSpend = spmin + " Min " + spsecond + " Seconds ";
                     timeSpend = spmin+convertSecond;
 
                     // Display the countdown in the element with id="demo"
@@ -208,7 +208,7 @@
                         $('#id_game_attemptted').val(game_attempted);
                         $('#id_game_correctted').val(game_correct);
                         // $('#id_is_terminated').val("No");
-                        $('#id_time_spend').val(timepend)
+                        $('#id_time_spend').val(timeSpend)
                         number_games = games.length-2;
                     }
                     number_games += 1;
@@ -227,7 +227,7 @@
                     $('#id_game_attemptted').val(game_attempted);
                     $('#id_game_correctted').val(game_correct);
                     // $('#id_is_terminated').val("No");
-                    $('#id_time_spend').val(timepend);
+                    $('#id_time_spend').val(timeSpend);
                     $('#id_visit_websites').val("Yes");
                 
                     }
@@ -239,7 +239,7 @@
                 //     $('#id_game_attemptted').val(game_attempted);
                 //     $('#id_game_correctted').val(game_correct);
                 //     $('#id_is_terminated').val("Yes");
-                //     $('#id_time_spend').val(timepend);
+                //     $('#id_time_spend').val(timeSpend);
                 //     $('#stop').prop("type", "submit")
                 //     }
                 // });
