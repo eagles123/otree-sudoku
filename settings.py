@@ -35,7 +35,11 @@ LANGUAGE_CODE = 'en'
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
-ROOMS = []
+ROOMS = [
+    {
+        'name': 'Sudoku',
+        'display_name': 'Sudoku Experiment',    },
+]
 
 
 # AUTH_LEVEL:

@@ -57,11 +57,11 @@ class Result1(Page):
 
 page_sequence = [
     Welcome,
-    # Questions,
-    # Award,
-    # Instruction2,
-    # Instruction3,
-    # Instruction4,
+    Questions,
+    Award,
+    Instruction2,
+    Instruction3,
+    Instruction4,
     DemoGame,
     Seat,
     Instruction5,
