@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %} {% load otree static %} {% block content %}
+<div class="container">
+  <div dir="rtl" class="card bg-light instructions">
+    <!-- <h5>You attemped puzzles, and solved corrected  puzzles.</h5> -->
+    <h5>
+      ניסית {{ game_attempped }} חידות, ופתרת נכון
+      {{ player.game_correctted }} חידות;
+    </h5>
+    <br />
+    <!-- <h5>You played {{player.time_spend}} out of 30 minutes. </h5> -->
+    <h5>ושיחקת במשך {{ player.time_spend }} דקות מתוך ה 30 דקות</h5>
+    <br />
+  </div>
+
+  {% next_button %}
+</div>
+{% endblock %}

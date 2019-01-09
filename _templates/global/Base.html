@@ -7,7 +7,6 @@
     <title>{% block head_title %}{% block title %}
     {% endblock %}{% endblock %}</title>
     {% block internal_styles %}
-       
         <link rel="stylesheet" href="{% static 'bootstrap4/css1/bootstrapc.min.css' %}">
         <link rel="stylesheet" href="{% static 'bootstrap4/css1/bootstrap-rebootc.min.css' %}">
         <link rel="stylesheet" href="{% static 'otree/css/theme.css' %}">
@@ -16,7 +15,7 @@
         of deprecating it, so some people's apps might still rely on jQuery being
         available within the content block.
         {% endcomment %}
-        <script src="{% static 'otree/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'sudoku/jquery-3.3.1.min.js' %}"></script>
     {% endblock %}
     {# these blocks are for public API #}
     {% block global_styles %}{% endblock %}

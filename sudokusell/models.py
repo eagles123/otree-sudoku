@@ -26,9 +26,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    seat_number = models.StringField(label='מספר המושב שלך:')
-    visit_websites = models.StringField(initial="No")
-    game_attemptted = models.IntegerField()
+    subject_id = models.StringField()
+    visit_websites = models.StringField(initial="0")
+    game_attempted_seriously = models.IntegerField()
+    games_looked_at = models.IntegerField()
     game_correctted = models.IntegerField()
     time_spend = models.StringField()
     price_toSell = models.FloatField()
@@ -38,6 +39,7 @@ class Player(BasePlayer):
     second_demo_time = models.StringField()
     demo1_button_sequence = models.StringField()
     demo2_button_sequence = models.StringField()
+    skip_time = models.StringField()
     #     choices=['18-19', '20-21', '22-23', '24-25', '26 and older'],
     #     label='How old are you',
     #     widget=widgets.RadioSelect)
@@ -59,7 +61,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect)
     gender = models.StringField(
         choices=['גבר', 'אישה'],
-        label='ב.	ציין\ח את מגדרך',
+        label='ב.ציין\ח את מגדרך',
         widget=widgets.RadioSelect)
     sudokoHobby = models.StringField(
         choices=['הרבה פעמים', 'לעתים קרובות', 'מדי פעם', 'באופן נדיר', 'אף פעם לא'],

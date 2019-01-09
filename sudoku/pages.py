@@ -2,6 +2,10 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class InputId(Page):
+    form_model ="player"
+    form_fields = ["subject_id"]
+
 class Welcome(Page):
     pass
 
@@ -27,11 +31,6 @@ class Instruction5(Page):
 class Instruction6(Page):
     pass
 
-class Seat(Page):
-    form_model = 'player'
-    form_fields = ['seat_number']
-
-
 class Instruction7(Page):
     pass
 
@@ -41,7 +40,7 @@ class DemoGame(Page):
 
 class Sudoku(Page):
     form_model = 'player'
-    form_fields = ['game_attemptted','game_correctted', 'time_spend','visit_websites']
+    form_fields = ['game_attempted_seriously', 'games_looked_at', 'game_correctted', 'time_spend', 'skip_time', 'visit_websites']
 
 class Buy(Page):
     form_model = 'player'
@@ -49,21 +48,22 @@ class Buy(Page):
 
 
 class Result(Page):
-    pass
+    def vars_for_template(self):
+        return {'game_attempped' : self.player.game_attempted_seriously + self.player.games_looked_at}
 
 class Result1(Page):
     pass
 
 
 page_sequence = [
-    Welcome,
+    # InputId,
+    # Welcome,
     # Questions,
     # Award,
     # Instruction2,
     # Instruction3,
     # Instruction4,
     # DemoGame,
-    # Seat,
     # Instruction5,
     # Instruction6,
     # Instruction7,

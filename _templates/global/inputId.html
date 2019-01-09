@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %} {% load otree static %} {% block content %}
+<div class="container">
+  <br />
+  <div dir="ltr" class="card bg-light instructions">
+    <p dir="ltr">Please enter participant number</p>
+
+    {% formfields %}
+  </div>
+  {% next_button %}
+</div>
+
+{% endblock %}
