@@ -133,12 +133,7 @@
     // console.log(sum(games[0]));
     $("#return").hide();
     $("#total").html("/" + (games.length - 1));
-    //disable enter key
-    $("html").bind("keypress", function(e) {
-      if (e.keyCode == 13) {
-        return false;
-      }
-    });
+
     buildGame();
     var origmin = 29;
     var orisec = 60;
@@ -165,7 +160,6 @@
       if (countdown <= 0) {
         clearInterval(timer);
         if (visit === false) {
-          $("#submit-button").click();
           $("#id_game_attempted_seriously").val(game_attempted_seriously);
           $("#id_games_looked_at").val(games_looked_at);
           $("#id_game_correctted").val(game_correct);
@@ -178,6 +172,13 @@
         }
       }
     }, 1000);
+
+    //disable enter key
+    $("html").bind("keypress", function(e) {
+      if (e.keyCode == 13) {
+        return false;
+      }
+    });
 
     //function to transform each game(list fomr) to a two dimensonal array
     function generateGameData(list) {
@@ -254,6 +255,7 @@
         'בחרת לשוטט באתרים אחרים. תוכל לחזור למשחק באמצעות לחיצה על הכפתור "המשך במשחק".'
       );
       if (r) {
+        visit = true;
         if (counter === games.length - 1) {
           visitNumber += 1;
           $("#id_visit_websites").val(visitNumber);
@@ -262,8 +264,6 @@
           $("#return").prop("disabled", true);
         } else {
           let working_time_stop = new Date();
-          wroking_time += working_time_stop - wroking_time_start;
-          visit = true;
           visitNumber += 1;
           $("#return").show();
           $("#submit-button").prop("disabled", true);
